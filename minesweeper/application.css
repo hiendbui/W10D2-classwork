@@ -1,0 +1,21 @@
+.tile-clicked {
+    border-style: inset;
+    height:30px;
+    width: 30px;
+    display:flex;
+    justify-content: center;
+    background-color: lightgrey;
+}
+
+.tile-unclicked {
+    border-style: outset;
+    height:30px;
+    width: 30px;
+    display:flex;
+    justify-content: center;
+    background-color: lightgrey;
+}
+
+.row{
+    float:left;
+}

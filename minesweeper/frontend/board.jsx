@@ -11,7 +11,6 @@ export default class Board extends React.Component {
     render() {
         return (
         <div>
-            <h1>Board</h1>
             {this.rows()}
         </div>    
         )
@@ -19,9 +18,9 @@ export default class Board extends React.Component {
 
     rows() {
         const board = this.props.board;
-        board.grid.map((row, idx) => {
+        return board.grid.map((row, idx) => {
             return (
-                <div key={idx}>
+                <div className='row' key={idx}>
                     {this.tiles(row,idx)}
                 </div>
             )
@@ -30,13 +29,11 @@ export default class Board extends React.Component {
 
     tiles(row,idx) {
         const board = this.props.board;
-        row.map((tile) => {
-            return (
-                <ul key={idx}>
-                    <Tile tile={tile} updateGame={this.props.updateGame}/>
-                </ul>
-            )
-        })
+        return row.map((tile, j) => {
+                return (
+                    <Tile tile={tile} updateGame={this.props.updateGame} key={j + idx} />
+                )
+                })
     }
 }
 

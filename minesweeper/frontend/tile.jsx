@@ -8,16 +8,26 @@ class Tile extends React.Component {
     }
 
     handleClick(e){
-        debugger;
-    //    const revealed =  this.state.key ?  : false
-       this.props.updateGame(this.props.Tile, revealed); 
+       const flag =  e.altKey ?  true : false;
+       this.props.updateGame(this.props.tile, flag); 
     }
 
     render() { 
+        
+        const tile = this.props.tile;
+        const bombCount = tile.adjacentBombCount();
+        let icon;
+        if(tile.explored){
+            icon = tile.bombed ? "💣" : bombCount > 0 ? bombCount : ""
+        } else if (tile.flagged) {
+            icon = "🚩";
+        } else {
+            icon = "‎‏‏‎‎";
+        }
+    
         return (
-            <div>
-                <h1>tile</h1>
-                <button onClick={this.handleClick}>tile</button>
+            <div className={tile.explored ? 'tile-clicked' : 'tile-unclicked'} onClick={this.handleClick}>
+                {icon}
             </div>
           );
     }
