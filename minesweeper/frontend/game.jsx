@@ -8,6 +8,7 @@ class Game extends React.Component {
         this.state = { board: new Minesweeper.Board(9, 10)};
         this.updateGame = this.updateGame.bind(this);
         this.restartGame = this.restartGame.bind(this);
+        this.popUp = this.popUp.bind(this)
     }
 
     updateGame(tile, flag){
@@ -25,10 +26,24 @@ class Game extends React.Component {
         this.setState({board: board})
     }
 
+    popUp() {
+        if (this.state.board.won() || this.state.board.lost()) {
+        const text = this.state.board.won() ? "You Won!" : "You Lost!";
+        return (
+        <div className="screen">
+            <div className="popup"> 
+                <p>{text}</p>
+                <button onClick={this.restartGame}>Play Again</button>
+            </div>
+        </div>
+        )}
+    }   
+    
     render(){
         return(
             <div>
-                <h1>Mine Sweeper</h1>
+                <h1 className="title">Mine Sweeper</h1>
+                {this.popUp()}
                 <Board board = {this.state.board} updateGame = {this.updateGame}/>
             </div>
         )

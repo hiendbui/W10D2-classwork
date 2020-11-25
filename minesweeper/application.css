@@ -6,7 +6,9 @@
     justify-content: center;
     background-color: lightgrey;
 }
-
+.title{
+    display:flex;
+}
 .tile-unclicked {
     border-style: outset;
     height:30px;
@@ -18,4 +20,28 @@
 
 .row{
     float:left;
+}
+
+.screen {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.popup {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: -220px;
+    width: 100px;
+    padding: 20px;
+    background: #fff;
+    z-index: 3;
+    border-radius: 5px;
+    border: 1px solid #000;
+    
 }
